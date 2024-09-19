@@ -86,3 +86,24 @@ object paqueteDeMisilesVacio{
 		return 100
 	}
 }
+
+object residuosRadiactivos{
+	var property peso = 0
+
+	method nivelPeligrosidad(){
+		return 200
+	}
+}
+
+object embalajeDeSeguridad{
+	var property cosaQueEnvuelve = knightRider
+
+	method peso(){
+		return cosaQueEnvuelve.peso() 
+	} 
+
+	method nivelPeligrosidad(){
+		return cosaQueEnvuelve.nivelPeligrosidad() / 2 
+	}
+} 
+
