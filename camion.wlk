@@ -19,7 +19,7 @@ object camion {
 		return cosas.any({cosa => cosa.peso() == peso})
 	}	
 	method elDeNivel(nivel){
-		return cosas.find({ cosa => cosas.nivelPeligrosidad() == nivel })
+		return cosas.find({ cosa => cosa.nivelPeligrosidad() == nivel })
 	}
 	method pesoTotal(){
 		return cosas.peso() + tara
@@ -28,14 +28,18 @@ object camion {
 		return self.pesoTotal() > pesoMaximo
 	}
 	method objetosQueSuperanPeligrosidad(nivel) {
-		return cosas.filter({ cosa => cosas.nivelPeligrosidad() > nivel })
+		return cosas.filter({ cosa => cosa.nivelPeligrosidad() > nivel })
 	}
 	method objetosMasPeligrososQue(cosa){
-		return cosas.filter({ cosa => cosas.nivelPeligrosidad() > cosa.nivelPeligrosidad() })
+		return cosas.filter({ cosa => cosa.nivelPeligrosidad() > cosa.nivelPeligrosidad() })
 	}
 	method puedeCircularEnRuta(nivelMaximoPeligrosidad){
 		return (not self.excedidoDePeso()) && cosas.all({cosa => cosa.nivelDePeligrosidad() < nivelMaximoPeligrosidad })
 		//(cosas.none({ cosa => self.objetosQueSuperanPeligrosidad(nivelMaximoPeligrosidad).contains(cosa)})) // #reutilizando. si alguna de las cosas del conjunto esta contenida en el conjunto que devuelve el metdo "objetosQueSuperanPeligrosidad"
+	}	
+
+	method tieneAlgoQuePesaEntre(min, max){
+		return cosas.any({ cosa => cosa.peso() >= min &&  cosa.peso() <= max})
 	}	
 }
 
