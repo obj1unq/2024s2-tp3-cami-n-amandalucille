@@ -42,4 +42,3 @@ object camion {
 		return cosas.any({ cosa => cosa.peso() >= min &&  cosa.peso() <= max})
 	}	
 }
-
