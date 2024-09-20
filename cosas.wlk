@@ -7,6 +7,8 @@ object knightRider {
 
 	method bultoQueGenera(){
 		return 1
+	}
+	method sufrirConsecuencia(){
 	}		
 }
 
@@ -32,6 +34,9 @@ object bumblebee {
 	}
 	method bultoQueGenera(){
 		return 2
+	}
+	method sufrirConsecuencia(){
+		self.convertirEnAuto()
 	}
 }
 
@@ -64,6 +69,9 @@ object paqueteDeLadrillos{
     	} else {return 3}	
 	  }
 	}
+	method sufrirConsecuencia(){
+		cantDeLadrillos += 12
+	}
 }
 
 object arenaAGranel{
@@ -74,6 +82,9 @@ object arenaAGranel{
 	}
 	method bultoQueGenera(){
 		return 1
+	}
+	method sufrirConsecuencia(){
+		peso += 20
 	}
 }
 
@@ -89,6 +100,9 @@ object bateriaAntiaerea{
 	}
 	method bultoQueGenera(){
 		return estado.bultoQueGenera()
+	}
+	method sufrirConsecuencia(){
+		estado = paqueteDeMisilesLleno
 	}
 } 
 object paqueteDeMisilesLleno{
@@ -129,6 +143,9 @@ object contenedorPortuario{
 	method bultoQueGenera(){
 		return 1 + (contenido.sum({elemento => elemento.bultoQueGenera()}))
 	}
+	method sufrirConsecuencia(){
+		contenido.forEach({elemento => elemento.sufrirConsecuencia()})
+	}
 }
 object residuosRadiactivos{
 	var property peso = 0
@@ -138,6 +155,9 @@ object residuosRadiactivos{
 	}
 	method bultoQueGenera(){
 		return 1
+	}
+	method sufrirConsecuencia(){
+		peso += 15
 	}
 }
 
@@ -153,6 +173,9 @@ object embalajeDeSeguridad{
 	}
 	method bultoQueGenera(){
 		return 2
+	}
+	method sufrirConsecuencia(){
+
 	}
 } 
 

@@ -7,6 +7,7 @@ object camion {
 		
 	method cargar(unaCosa) {
 		cosas.add(unaCosa)
+		unaCosa.sufrirConsecuencia()
 	}
 	method descargar(unaCosa) {
 		cosas.add(unaCosa)
@@ -53,5 +54,32 @@ object camion {
 	method totalBultos(){
 		return cosas.sum({cosa=> cosa.bultoQueGenera() })
 	} 
+
+	method transportar(destino,camino){
+
+	}
 }
+
+object almacen{
+	const property contenido = #{}
+	const property bultosMaximos = 3
+	
+
+}
+
+object ruta9{
+
+	method nivelPeligrosidad(){
+		return 11
+	}
+}
+
+object caminoVecinal {
+	var property pesoMaximo = 0
+
+}
+
+
+
+
 
