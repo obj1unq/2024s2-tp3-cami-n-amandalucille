@@ -121,15 +121,13 @@ object contenedorPortuario{
 		contenido.add(unElemento)
 	}
 	method nivelPeligrosidad() {
-    if (contenido.isEmpty()) {
-        return 0
-    }else{
-    return contenido.max({ elemento => elemento.nivelPeligrosidad() })
+   	return contenido.fold(0, { max, elemento => max.max(elemento.nivelPeligrosidad()) })
 	}
-}
-	
 	method peso(){
 		return (contenido.sum({elemento => elemento.peso()})) + 100
+	}
+	method bultoQueGenera(){
+		return 1 + (contenido.sum({elemento => elemento.bultoQueGenera()}))
 	}
 }
 object residuosRadiactivos{
