@@ -4,6 +4,10 @@ object knightRider {
 
 	method nivelPeligrosidad() 
 		{ return 10 }
+
+	method bultoQueGenera(){
+		return 1
+	}		
 }
 
 object bumblebee {
@@ -25,6 +29,9 @@ object bumblebee {
 	}
 	method convertirEnRobot(){
 		estado = robot 
+	}
+	method bultoQueGenera(){
+		return 2
 	}
 }
 
@@ -48,12 +55,24 @@ object paqueteDeLadrillos{
 	method nivelPeligrosidad(){
 		return 2
 	}
+	method bultoQueGenera() {
+    if (cantDeLadrillos <= 100) {
+        return 1
+    } else{
+		if(cantDeLadrillos <= 300) {
+        	return 2
+    	} else {return 3}	
+	  }
+	}
 }
 
 object arenaAGranel{
 	var property peso = 0
 
 	method nivelPeligrosidad(){
+		return 1
+	}
+	method bultoQueGenera(){
 		return 1
 	}
 }
@@ -68,6 +87,9 @@ object bateriaAntiaerea{
 	method nivelPeligrosidad(){
 		return estado.nivelPeligrosidad()
 	}
+	method bultoQueGenera(){
+		return estado.bultoQueGenera()
+	}
 } 
 object paqueteDeMisilesLleno{
 	method nivelPeligrosidad(){
@@ -75,6 +97,9 @@ object paqueteDeMisilesLleno{
 	}
 	method peso(){
 		return 0
+	}
+	method bultoQueGenera(){
+		return 2
 	}
 }
 
@@ -85,13 +110,36 @@ object paqueteDeMisilesVacio{
 	method peso(){
 		return 100
 	}
+	method bultoQueGenera(){
+		return 1
+	}
 }
+object contenedorPortuario{
+	const property contenido = #{}
 
+	method cargar(unElemento) {
+		contenido.add(unElemento)
+	}
+	method nivelPeligrosidad() {
+    if (contenido.isEmpty()) {
+        return 0
+    }else{
+    return contenido.max({ elemento => elemento.nivelPeligrosidad() })
+	}
+}
+	
+	method peso(){
+		return (contenido.sum({elemento => elemento.peso()})) + 100
+	}
+}
 object residuosRadiactivos{
 	var property peso = 0
 
 	method nivelPeligrosidad(){
 		return 200
+	}
+	method bultoQueGenera(){
+		return 1
 	}
 }
 
@@ -104,6 +152,9 @@ object embalajeDeSeguridad{
 
 	method nivelPeligrosidad(){
 		return cosaQueEnvuelve.nivelPeligrosidad() / 2 
+	}
+	method bultoQueGenera(){
+		return 2
 	}
 } 
 

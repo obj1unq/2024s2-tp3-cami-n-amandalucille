@@ -3,7 +3,6 @@ import cosas.*
 object camion {
 	const     pesoMaximo = 2500
 	const           tara = 1000 
-
 	const property cosas = #{}
 		
 	method cargar(unaCosa) {
@@ -30,8 +29,8 @@ object camion {
 	method objetosQueSuperanPeligrosidad(nivel) {
 		return cosas.filter({ cosa => cosa.nivelPeligrosidad() > nivel })
 	}
-	method objetosMasPeligrososQue(cosa){
-		return cosas.filter({ cosa => cosa.nivelPeligrosidad() > cosa.nivelPeligrosidad() })
+	method objetosMasPeligrososQue(elemento){
+		return cosas.filter({ cosa => cosa.nivelPeligrosidad() > elemento.nivelPeligrosidad() })
 	}
 	method puedeCircularEnRuta(nivelMaximoPeligrosidad){
 		return (not self.excedidoDePeso()) && cosas.all({cosa => cosa.nivelDePeligrosidad() < nivelMaximoPeligrosidad })
@@ -40,5 +39,19 @@ object camion {
 
 	method tieneAlgoQuePesaEntre(min, max){
 		return cosas.any({ cosa => cosa.peso() >= min &&  cosa.peso() <= max})
-	}	
+	}
+
+	method cosaMasPesada(){
+		return cosas.find({cosa => cosa.peso() == self.pesoDelMasPesado() })
+	}
+	method pesoDelMasPesado(){
+		return cosas.max({cosa => cosa.peso()})
+	}
+	method pesos(){
+		return cosas.map({cosa => cosa.peso()})
+	}
+	method totalBultos(){
+		return cosas.sum({cosa=> cosa.bultoQueGenera() })
+	} 
 }
+
