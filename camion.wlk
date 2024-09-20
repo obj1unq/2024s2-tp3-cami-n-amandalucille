@@ -56,8 +56,18 @@ object camion {
 	} 
 
 	method transportar(destino,camino){
+		self.validarSipuedeTransportar(destino,camino)
 
 	}
+	method validarSipuedeTransportar(destino,camino){
+		if (not self.puedeTransportar(destino,camino)){
+			self.error("el camión no puede transportar")
+		}
+	}
+	method puedeTransportar(destino,camino){
+		return 
+	}
+	
 }
 
 object almacen{
