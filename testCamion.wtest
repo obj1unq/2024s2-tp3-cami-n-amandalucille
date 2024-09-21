@@ -1,9 +1,14 @@
 import camion.*
+import cosas.*
 
 describe "Camion, cosas y transporte"{
 
     test "camion"{
         camion.cargar(bumblebee)
+        camion.cargar(arenaAGranel)
+        
+        assert.equals(#{bumblebee,arenaAGranel}, camion.cosas())
+
     }
 
 
