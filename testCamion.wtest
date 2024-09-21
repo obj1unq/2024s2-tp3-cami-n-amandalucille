@@ -19,20 +19,8 @@ describe "Camion, cosas y transporte"{
         assert.equals(#{}, camion.objetosMasPeligrososQue(bateriaAntiaerea))
 
         assert.notThat(camion.puedeCircularEnRuta(11))
-
-
+        assert.that(camion.tieneAlgoQuePesaEntre(20,30))
+        assert.equals(bumblebee, camion.elMasPesado())
     }
-
-    
-
-
-
-
-
-
-
-
-
-
 }
 

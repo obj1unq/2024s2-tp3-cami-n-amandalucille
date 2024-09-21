@@ -43,11 +43,11 @@ object camion {
 	}
 
 	method cosaMasPesada(){
-		return cosas.find({cosa => cosa.peso() == self.pesoDelMasPesado() })
+		return cosas.find({cosa => cosa.peso() == self.elMasPesado() })
 	}
-	method pesoDelMasPesado(){
-		return cosas.max({cosa => cosa.peso()})
-	}
+		method elMasPesado(){
+			return cosas.max({cosa => cosa.peso()})
+		}
 	method pesos(){
 		return cosas.map({cosa => cosa.peso()})
 	}
@@ -89,16 +89,11 @@ object almacen{
 }
 
 object ruta9{
-	var property pesoMaximo = 0
+	var property pesoMaximo = 100
 
 	method nivelPeligrosidad(){
 		return 11
 	}
-
-	method sePuedeCircular(nivelMaximoPeligrosidad){
-		return camion.puedeCircularEnRuta(nivelMaximoPeligrosidad)
-	}
-
 }
 
 object caminoVecinal {
