@@ -43,11 +43,9 @@ object camion {
 	}
 
 	method cosaMasPesada(){
-		return cosas.find({cosa => cosa.peso() == self.elMasPesado() })
+		return cosas.max({cosa => cosa.peso() })
 	}
-		method elMasPesado(){
-			return cosas.max({cosa => cosa.peso()})
-		}
+	
 	method pesos(){
 		return cosas.map({cosa => cosa.peso()})
 	}
