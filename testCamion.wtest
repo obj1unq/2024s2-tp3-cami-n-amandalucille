@@ -18,8 +18,9 @@ describe "Camion, cosas y transporte"{
         bateriaAntiaerea.estado(paqueteDeMisilesLleno)  
         assert.equals(#{}, camion.objetosMasPeligrososQue(bateriaAntiaerea))
 
-        
-    
+        assert.notThat(camion.puedeCircularEnRuta(11))
+
+
     }
 
     

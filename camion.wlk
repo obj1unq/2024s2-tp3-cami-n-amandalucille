@@ -34,7 +34,7 @@ object camion {
 		return cosas.filter({ cosa => cosa.nivelPeligrosidad() > elemento.nivelPeligrosidad() })
 	}
 	method puedeCircularEnRuta(nivelMaximoPeligrosidad){
-		return (not self.excedidoDePeso()) && cosas.all({cosa => cosa.nivelDePeligrosidad() < nivelMaximoPeligrosidad })
+		return (not self.excedidoDePeso()) && cosas.all({cosa => cosa.nivelPeligrosidad() < nivelMaximoPeligrosidad })
 		//(cosas.none({ cosa => self.objetosQueSuperanPeligrosidad(nivelMaximoPeligrosidad).contains(cosa)})) // #reutilizando. si alguna de las cosas del conjunto esta contenida en el conjunto que devuelve el metdo "objetosQueSuperanPeligrosidad"
 	}	
 
