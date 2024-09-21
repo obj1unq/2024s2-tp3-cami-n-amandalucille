@@ -19,10 +19,10 @@ object camion {
 		return cosas.any({cosa => cosa.peso() == peso})
 	}	
 	method elDeNivel(nivel){
-		return cosas.find({ cosa => cosa.nivelPeligrosidad() == nivel })
+		return cosas.find{ cosa => cosa.nivelPeligrosidad() == nivel }
 	}
 	method pesoTotal(){
-		return cosas.peso() + tara
+		return cosas.sum(){cosa=> cosa.peso()} + tara
 	}
 	method excedidoDePeso(){
 		return self.pesoTotal() > pesoMaximo
@@ -57,7 +57,7 @@ object camion {
 
 	method transportar(destino,camino){
 		self.validarSipuedeTransportar(destino,camino)
-
+		self.vaciarContenidoEnDestino(destino)		
 	}
 	method validarSipuedeTransportar(destino,camino){
 		if (not self.puedeTransportar(destino,camino)){
@@ -65,31 +65,46 @@ object camion {
 		}
 	}
 	method puedeTransportar(destino,camino){
-		return 
+		return not (self.excedidoDePeso())
+			&& not (destino.cantidadDeBultosMaximosExcedida()) 
+			&& self.puedeCircularEnRuta(camino.nivelPeligrosidad())
+			&& self.pesoTotal() <= camino.pesoMaximo()
 	}
-	
+	method vaciarContenidoEnDestino(destino){
+		destino.integrarCosasAContenido()
+		cosas.clear()	
+	}
 }
 
 object almacen{
 	const property contenido = #{}
 	const property bultosMaximos = 3
 	
-
+	method integrarCosasAContenido(){
+		contenido.addAll(camion.cosas())
+	}
+	method cantidadDeBultosMaximosExcedida(){
+		return camion.totalBultos() > bultosMaximos 
+	}
 }
 
 object ruta9{
+	var property pesoMaximo = 0
 
 	method nivelPeligrosidad(){
 		return 11
 	}
+
+	method sePuedeCircular(nivelMaximoPeligrosidad){
+		return camion.puedeCircularEnRuta(nivelMaximoPeligrosidad)
+	}
+
 }
 
 object caminoVecinal {
-	var property pesoMaximo = 0
+	var property pesoMaximo = 10
 
+		method nivelPeligrosidad(){
+		return 0
+	}
 }
-
-
-
-
-

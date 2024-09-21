@@ -175,7 +175,7 @@ object embalajeDeSeguridad{
 		return 2
 	}
 	method sufrirConsecuencia(){
-
+ 
 	}
 } 
 

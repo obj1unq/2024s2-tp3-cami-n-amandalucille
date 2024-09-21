@@ -71,14 +71,3 @@ aparecer otros lugares) y el camino es una de las dos opciones (ruta 9 o caminos
 polimórficos.
 
 Es importante realizar las validaciones correspondientes.
-
-
-
-
-
-
- 
-
-
-
-

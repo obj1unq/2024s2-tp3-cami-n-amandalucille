@@ -1,0 +1,18 @@
+import camion.*
+
+describe "Camion, cosas y transporte"{
+
+    test "camion"{
+        camion.cargar(bumblebee)
+    }
+
+
+
+
+
+
+
+
+
+}
+
