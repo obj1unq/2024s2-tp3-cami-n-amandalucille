@@ -13,11 +13,9 @@ object knightRider {
 }
 
 object bumblebee {
-	var estado =  auto
+	var property estado =  robot
 	
-	method estado(){
-		return estado
-	} 
+
 
 	method peso()
 	 	{ return 800 }
@@ -75,7 +73,7 @@ object paqueteDeLadrillos{
 }
 
 object arenaAGranel{
-	var property peso = 0
+	var property peso = 10
 
 	method nivelPeligrosidad(){
 		return 1

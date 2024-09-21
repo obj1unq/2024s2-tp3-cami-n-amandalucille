@@ -4,12 +4,18 @@ import cosas.*
 describe "Camion, cosas y transporte"{
 
     test "camion"{
-        camion.cargar(bumblebee)
+        camion.cargar(bumblebee)    
         camion.cargar(arenaAGranel)
         
-        assert.equals(#{bumblebee,arenaAGranel}, camion.cosas())
-
+        assert.equals(#{bumblebee,arenaAGranel}, camion.cosas()) // cargar()  
+        assert.that(camion.todoPesoPar())  //todoPesoPar() 
+        assert.that(camion.hayAlgunoQuePesa(30)) // hayAlgunoQuePesa(peso)  (arenaAGranel pesa 20 al ser agregado al camion y su peso original era 10)
+        assert.equals(bumblebee, camion.elDeNivel(15))  // elDeNivel(nivelPeligrosidad) // (bumblebee pasa a tener nivel de peligrosidad 15 porque se convierte en auto al ser agregado al camion)
+        assert.equals(1830,camion.pesoTotal())
     }
+
+    
+
 
 
 

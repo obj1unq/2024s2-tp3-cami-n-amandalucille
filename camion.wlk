@@ -10,19 +10,19 @@ object camion {
 		unaCosa.sufrirConsecuencia()
 	}
 	method descargar(unaCosa) {
-		cosas.add(unaCosa)
+		cosas.remove(unaCosa)
 	}
 	method todoPesoPar(){
-		return cosas.all({cosa => (cosa.peso() % 2) == 0})
+		return cosas.all{cosa => (cosa.peso() % 2) == 0}
 	}
 	method hayAlgunoQuePesa(peso){
 		return cosas.any({cosa => cosa.peso() == peso})
 	}	
 	method elDeNivel(nivel){
-		return cosas.find{ cosa => cosa.nivelPeligrosidad() == nivel }
+		return cosas.find{ cosa => cosa.nivelPeligrosidad() == nivel}
 	}
 	method pesoTotal(){
-		return cosas.sum(){cosa=> cosa.peso()} + tara
+		return cosas.sum{cosa => cosa.peso()} + tara
 	}
 	method excedidoDePeso(){
 		return self.pesoTotal() > pesoMaximo
