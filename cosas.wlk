@@ -34,7 +34,7 @@ object bumblebee {
 		return 2
 	}
 	method sufrirConsecuencia(){
-		self.convertirEnAuto()
+		self.convertirEnRobot()
 	}
 }
 
@@ -108,7 +108,7 @@ object paqueteDeMisilesLleno{
 		return 100
 	}
 	method peso(){
-		return 0
+		return 100
 	}
 	method bultoQueGenera(){
 		return 2
@@ -120,7 +120,7 @@ object paqueteDeMisilesVacio{
 		return 0
 	}
 	method peso(){
-		return 100
+		return 0
 	}
 	method bultoQueGenera(){
 		return 1
