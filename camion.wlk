@@ -1,6 +1,6 @@
 import cosas.*
 
-object camion {
+class Camion {
 	const     pesoMaximo = 2500
 	const           tara = 1000 
 	const property cosas = #{}
@@ -73,6 +73,10 @@ object camion {
 		cosas.clear()	
 	}
 }
+const camion1 = new Camion(pesoMaximo = 5000, tara = 200)
+const camion2 = new Camion(pesoMaximo = 700, tara = 500)
+
+
 
 object almacen{
 	const property contenido = #{}
@@ -82,7 +86,7 @@ object almacen{
 		contenido.addAll(contenedor)
 	}
 	method cantidadDeBultosMaximosExcedida(){
-		return (contenido.size() + camion.totalBultos()) > bultosMaximos 
+		return (contenido.size() + camion1.totalBultos()) > bultosMaximos 
 	}
 }
 
